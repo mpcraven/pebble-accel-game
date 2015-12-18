@@ -3,7 +3,8 @@
 // Adapted from accel-discs Pebble example https://github.com/pebble-examples/feature-accel-discs/ 
 // Fill blocks by hitting with disc for 1,2 or 4 points depending on level, avoiding special X block -10 points
 // Level designs include whole or partial bricks to hit & fill, multiple discs, varying disc size, varying speed.
-// 56 levels, one new level per minute. After 56 the levels repeat.
+// 54 levels, one new level per minute, after which the levels repeat.
+// Not optimised for Pebble Round
 
 #include "pebble.h"
 #include "accel_game_1.h"
@@ -385,8 +386,8 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   // First, Increase brick complexity level from 1 whole brick to 2 halves,4 quarters then back to 1 whole. Levels 1-3
   // then, Increase number of discs to 2 then back to 1. Levels 4-6
   // then, Decrease disc radius by one from 8 to 7 to 6 then back to 8 (also, second disc is 0.5 bigger). Levels 7-18 
-  // then, Increase update rate 25, 20, 15 ms then back to 25ms. Levels 19-56. 
-  // then, level 57 is the same as level 1.
+  // then, Increase update rate 25, 20, 15 ms then back to 25ms. Levels 19-54. 
+  // then, level 55 is the same as level 1.
   if (s_uptime % 60 == 0)
   {
     s_level++;
